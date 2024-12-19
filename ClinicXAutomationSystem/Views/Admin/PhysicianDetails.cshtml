@@ -1,0 +1,41 @@
+﻿@model ClinicXAutomationSystem.Models.physician
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Physician Details</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Physician Information</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3 text-uppercase font-weight-bold">Name</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.name)</dd>
+
+                <dt class="col-sm-3 text-uppercase font-weight-bold">Specialisation</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Specialisation)</dd>
+
+                <dt class="col-sm-3 text-uppercase font-weight-bold">Contact</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.contact)</dd>
+
+                <dt class="col-sm-3 text-uppercase font-weight-bold">Email</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.email)</dd>
+
+                <dt class="col-sm-3 text-uppercase font-weight-bold">Address</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.address)</dd>
+
+                <dt class="col-sm-3 text-uppercase font-weight-bold">Registration No.</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.regNO)</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="@Url.Action("Edit", new { id = Model.physicianID })" class="btn" style="background-color: #CC3057; color: white;" class="shadow me-2">Edit</a>
+        <a href="@Url.Action("Index")" class="btn btn-outline-secondary shadow">Back ></a>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+﻿@model ClinicXAutomationSystem.Models.physician
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <!-- Container for centering the form -->
+    <div class="container mt-5 d-flex justify-content-center">
+        <div class="col-md-8">
+            <h4 class="text-center mb-4">Edit Physician</h4>
+            <hr />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.HiddenFor(model => model.physicianID)
+
+            <!-- Name Field -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "col-md-3 col-form-label uppercase-label" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Specialisation Field -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.Specialisation, htmlAttributes: new { @class = "col-md-3 col-form-label uppercase-label" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Specialisation, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Specialisation, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Contact Field -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.contact, htmlAttributes: new { @class = "col-md-3 col-form-label uppercase-label" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.contact, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.contact, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "col-md-3 col-form-label uppercase-label" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Address Field -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "col-md-3 col-form-label uppercase-label" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Registration Number Field -->
+            <div class="form-group row mb-3">
+                @Html.LabelFor(model => model.regNO, htmlAttributes: new { @class = "col-md-3 col-form-label uppercase-label" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.regNO, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.regNO, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group row">
+                <div class="col-md-9 offset-md-3">
+                    <input type="submit" value="Save Changes" class="btn btn-danger btn-lg w-100" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div class="mt-4 mb-3">
+    @Html.ActionLink("Back >", "Index", new { @class = "btn btn-outline-secondary btn-sm" })
+</div>
+
+<!-- Custom CSS for Uppercase -->
+<style>
+    .uppercase-label {
+        text-transform: uppercase;
+    }
+</style>

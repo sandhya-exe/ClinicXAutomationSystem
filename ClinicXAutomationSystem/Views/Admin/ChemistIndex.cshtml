@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ClinicXAutomationSystem.Models.chemist>
+
+
+@{
+    ViewBag.Title = "ChemistIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>All Chemists</h2>
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                <div>
+                    @Html.ActionLink("Edit", "ChemistEdit", new { id = item.chemistID }, new { @class = "btn btn-outline-primary btn-sm mx-1" })
+                    @*@Html.ActionLink("Details", "ChemistDetails", new { id = item.chemistID }, new { @class = "btn btn-outline-secondary btn-sm mx-1" })*@
+                    @*@Html.ActionLink("Delete", "ChemistDelete", new { id = item.chemistID }, new { @class = "btn btn-outline-danger btn-sm mx-1" })*@
+                </div>
+
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Create New", "ChemistCreate")
+</p>
+
+
+<div>
+    @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-outline-secondary btn-sm" })
+</div>
+
+

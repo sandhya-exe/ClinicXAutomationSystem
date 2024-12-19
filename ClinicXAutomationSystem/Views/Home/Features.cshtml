@@ -1,0 +1,282 @@
+﻿
+@{
+    ViewBag.Title = "Features";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<section id="features" class="cmfw" style="display: flex; flex-wrap: wrap; padding: 60px 0; width: 100%; background-color: #f9f9f9;">
+
+    <div class="container">
+        <h2 class="text-center mb-5" style="width: 100%;">Key Features</h2>
+        <div class="row" style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between;">
+             @*Card 1*@ 
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-notes-medical ehr-icon mb-3"></i>
+                        <h3 class="card-title">Online Drugs Records</h3>
+                        <p class="card-text">
+                            Effortlessly access and maintain detailed records of prescribed medications, dosages, and schedules in a secure online environment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+             @*Card 2*@ 
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-file-alt document-icon mb-3"></i>
+                        <h3 class="card-title">Specialist Doctors</h3>
+                        <p class="card-text">
+                            Consult with top-tier specialists across various medical fields to receive expert advice and tailored treatment plans.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+             @*Card 3*@ 
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-stethoscope template-icon mb-3"></i>
+                        <h3 class="card-title">View Prescription</h3>
+                        <p class="card-text">
+                            Quickly document patient visits with custom-built SOAP templates tailored to your specialty needs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+             @*Card 4*@ 
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-calendar-alt appointment-icon mb-3"></i>
+                        <h3 class="card-title">Appointment Scheduling</h3>
+                        <p class="card-text">
+                            Create and manage patient appointments and schedule resources using a color-coded calendar.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+             @*Card 5*@ 
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-project-diagram decision-icon mb-3"></i>
+                        <h3 class="card-title">Clinical Decision Support</h3>
+                        <p class="card-text">
+                            Use customizable decision trees in templates to drill down to details about the important annotations in the chart, while treating complex medical conditions..
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+             @*Card 6*@ 
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-user-shield role-icon mb-3"></i>
+                        <h3 class="card-title">Role-Based Access</h3>
+                        <p class="card-text">
+                            Define and manage access privileges of practice members at a granular level. All user actions are automatically audited to spot any access violations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+             @*Card 7*@ 
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-comment-alt secure-msg-icon mb-3"></i>
+                        <h3 class="card-title"> Messaging</h3>
+                        <p class="card-text">
+                            Communicate and exchange messages securely with fellow providers and patients using the HIPAA-compliant encrypted messaging platform.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+             @*Card 8*@ 
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-box inventory-icon mb-3"></i>
+                        <h3 class="card-title">Simple Use</h3>
+                        <p class="card-text">
+                            Experience an intuitive and straightforward platform designed for ease of use, ensuring a hassle-free user experience for everyone.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+             @*Card 9*@ 
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-chart-pie analytics-icon mb-3"></i>
+                        <h3 class="card-title">online Note/Advice</h3>
+                        <p class="card-text">
+                            Stay informed with personalized notes, recommendations, and follow-up advice from your healthcare provider, all accessible online.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+
+    /* General reset for margins and paddings */
+    body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, a, img, ol, ul, li {
+        margin: 0;
+        padding: 0;
+    }
+
+
+    /* Styling for the entire features section */
+    #features {
+        text-align: left;
+        padding: 60px 0;
+        background-color: #f9f9f9;
+    }
+
+    /* Card styles */
+    .card {
+        height: 300px; /* or any other fixed value */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+        .card-body i {
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin: 15px 0;
+    }
+
+
+    .card-text {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+
+    /* Icon colors */
+    .ehr-icon {
+        color: #007bff;
+    }
+
+    .decision-icon {
+        color: #6c757d;
+    }
+
+    .template-icon {
+        color: #dc3545;
+    }
+
+    .appointment-icon {
+        color: #007bff;
+    }
+
+    .role-icon {
+        color: #ffc107;
+    }
+
+    .secure-msg-icon {
+        color: #17a2b8;
+    }
+
+    .inventory-icon {
+        color: #28a745;
+    }
+
+    .payment-icon {
+        color: #ff5722;
+    }
+
+    .analytics-icon {
+        color: #9c27b0;
+    }
+
+    .invoice-icon {
+        color: #e91e63;
+    }
+
+    .mobile-icon {
+        color: #3f51b5;
+    }
+
+    /* Responsive layout */
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .col-md-4 {
+        flex: 0 0 31%; /* For 3 columns */
+        box-sizing: border-box;
+        margin-bottom: 30px;
+    }
+
+
+    @@media (max-width: 768px) {
+        .col-md-4 {
+            flex: 0 0 48%;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .col-md-4 {
+            flex: 0 0 100%;
+        }
+    }
+
+    /* Hover effect on cards */
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+        /* Optional hover effects */
+        .card:hover i {
+            opacity: 0.9;
+        }
+
+        /* Optional: Add hover effects */
+        .card:hover .ehr-icon {
+            color: #0056b3;
+        }
+
+        .card:hover .document-icon {
+            color: #1e7e34;
+        }
+
+        .card:hover .template-icon {
+            color: #bd2130;
+        }
+</style>

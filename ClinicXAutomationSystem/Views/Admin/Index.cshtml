@@ -1,0 +1,178 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+
+<div class="admin-dashboard-header">
+    <h2 class="dashboard-title">Admin Dashboard</h2>
+    <hr class="dashboard-hr">
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    <!-- Physician Card -->
+    <div class="col">
+        <div class="card shadow-sm border-light d-flex flex-column">
+            <img src="~/Content/images/doctors.png" class="card-img-top" alt="Physician">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a class="nav-link" href="@Url.Action("PhysicianIndex","Admin")">
+                        Physician
+                    </a>
+                </h5>
+                <p class="card-text">Manage physician records and appointments with ease. A streamlined interface for healthcare professionals.</p>
+                <a href="@Url.Action("PhysicianIndex","Admin")" class="btn btn-success mt-auto">Manage</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Patient Card -->
+    <div class="col">
+        <div class="card shadow-sm border-light d-flex flex-column">
+            <img src="~/Content/images/patient1.png" class="card-img-top" alt="Patient">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a class="nav-link" href="@Url.Action("PatientIndex","Admin")">
+                        Patient
+                    </a>
+                </h5>
+                <p class="card-text">Manage patient data, appointments, and medical history with our easy-to-use platform.</p>
+                <a href="@Url.Action("PatientIndex","Admin")" class="btn btn-success mt-auto">Manage</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chemist Card -->
+    <div class="col">
+        <div class="card shadow-sm border-light d-flex flex-column">
+            <img src="~/Content/images/chemist.png" class="card-img-top" alt="Chemist">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a class="nav-link" href="@Url.Action("ChemistIndex","Admin")">
+                        Chemist
+                    </a>
+                </h5>
+                <p class="card-text">Track and manage pharmaceutical supplies, inventory, and dispensing details efficiently.</p>
+                <a href="@Url.Action("ChemistIndex","Admin")" class="btn btn-success mt-auto">Manage</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Supplier Card -->
+    <div class="col">
+        <div class="card shadow-sm border-light d-flex flex-column">
+            <img src="~/Content/images/supply.png" class="card-img-top" alt="Supplier">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a class="nav-link" href="@Url.Action("SupplierIndex","Admin")">
+                        Supplier
+                    </a>
+                </h5>
+                <p class="card-text">Manage supplier information and streamline inventory procurement to improve operations.</p>
+                <a href="@Url.Action("SupplierIndex","Admin")" class="btn btn-success mt-auto">Manage</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Appointment Card -->
+    <div class="col">
+        <div class="card shadow-sm border-light d-flex flex-column">
+            <img src="~/Content/images/Appointment2.png" class="card-img-top" alt="Appointment">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a class="nav-link" href="@Url.Action("Index","Appointments")">
+                        Appointment
+                    </a>
+                </h5>
+                <p class="card-text">Schedule, manage, and track appointments effectively with our automated appointment system.</p>
+                <a href="@Url.Action("Index","Appointments")" class="btn btn-success mt-auto">Manage</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Admin Dashboard Title Style */
+    .admin-dashboard-header {
+        text-align: center;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+
+    .dashboard-title {
+        font-size: 36px;
+        font-weight: bold;
+        color: #2c3e50;
+    }
+
+    .dashboard-hr {
+        border: 1px solid #3498db;
+        width: 50%;
+        margin: 10px auto;
+    }
+
+    /* Card Styles */
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-img-top {
+        border-bottom: 1px solid #ddd;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .card-body {
+        text-align: center;
+        padding: 20px;
+        flex-grow: 1; /* Allow card body to grow */
+    }
+
+    .card-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #2980b9;
+    }
+
+    .card-text {
+        font-size: 14px;
+        color: #7f8c8d;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .nav-link {
+        color: #2980b9;
+        text-decoration: none;
+    }
+
+        .nav-link:hover {
+            color: #1abc9c;
+        }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+
+    .row-cols-md-2 {
+        margin-top: 20px;
+    }
+
+    .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+        margin-top : 15px;
+        margin-bottom:10px;
+    }
+</style>

@@ -1,0 +1,159 @@
+﻿@model IEnumerable<ClinicXAutomationSystem.Models.advice>
+
+@{
+    ViewBag.Title = "ViewAdvice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Include FontAwesome for Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<style>
+    /* General page styling */
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f4f7f6;
+        color: #333;
+       
+    }
+
+    h2 {
+        padding-bottom:30px;
+        padding-top:30px;
+        text-align: center;
+        color: #4CAF50;
+        margin-bottom: 30px;
+    }
+
+    .card {
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: #fff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        color: #333;
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .icon {
+        margin-right: 10px;
+        font-size: 1.2rem;
+        color: #007bff;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        border-radius: 5px;
+        color: #fff;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .criticality-high {
+        color: red;
+    }
+
+    .criticality-medium {
+        color: orange;
+    }
+
+    .criticality-low {
+        color: green;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .col-md-4 {
+        margin-bottom: 20px;
+    }
+
+    .prescription-section {
+        margin-top: 20px;
+        padding-top: 10px;
+    }
+
+    .prescription-card {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 5px;
+    }
+</style>
+
+<h2><i class="fas fa-notes-medical icon"></i> View Advice</h2>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-3 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-calendar-alt icon"></i>Appointment Date: @item.Appointment.ScheduleDateTime</h5>
+                    <p class="card-text"><strong><i class="fas fa-user-md icon"></i>Appointment with:</strong> @item.Appointment.physician.name</p>
+                    <p class="card-text">
+                        <strong><i class="fas fa-exclamation-circle icon"></i>Criticality:</strong>
+                        <span class="criticality-@item.Appointment.Criticality.ToLower()">@item.Appointment.Criticality</span>
+                    </p>
+
+                    <h5 class="card-title"><i class="fas fa-comment-medical icon"></i>Advice</h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.advice1)</p>
+
+                    @using (Html.BeginForm("ViewPrescription", "Physician", FormMethod.Get))
+                    {
+                        string str = (ViewBag.CurrentAdviceID != null && ViewBag.CurrentAdviceID == item.adviceID)
+                                     ? ViewBag.flgTxt as string
+                                     : "Show";
+
+                        <input type="hidden" name="adviceID" value="@item.adviceID" />
+                        <input type="hidden" name="flgBtn" value="@str" />
+                        <input type="hidden" name="id" value="@item.AppointmentID" />
+                        <button type="submit" class="btn btn-primary">@str Prescription</button>
+                    }
+
+                    <!-- Section to display the prescriptions -->
+                    <div class="prescription-section" id="prescription-section">
+                        @if (ViewBag.Prescriptions != null)
+                        {
+                            <div class="prescription-card">
+                                @Html.Partial("ViewPrescription", (IEnumerable<ClinicXAutomationSystem.Models.prescription>)ViewBag.Prescriptions)
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div>
+    @Html.ActionLink("Back to Dashboard", "Index", "Physician")
+</div>

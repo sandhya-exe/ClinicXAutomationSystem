@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ClinicXAutomationSystem.Models.PODrugLine>
+
+@{
+    ViewBag.Title = "ViewSuppliedOrders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <style>
+        /* Center the page title */
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f7f7f7;
+            color: #333;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* Button Styling */
+        .btn {
+            padding: 10px 15px;
+            font-size: 1rem;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .btn:hover {
+                background-color: #0056b3;
+            }
+
+        /* Align table to the center of the page */
+        .table-wrapper {
+            max-width: 90%;
+            margin: 0 auto;
+            overflow-x: auto; /* Handle large tables on small screens */
+        }
+    </style>
+</head>
+
+<h2>@ViewBag.Title</h2>
+
+<div class="table-wrapper">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>Drug Name</th>
+                <th>Quantity</th>
+                <th>Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.orderStatus)</td>
+                    <td>@Html.DisplayFor(modelItem => item.drug.name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Qty)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Rate)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div>
+    @Html.ActionLink("Back to Dashboard", "Index", "Supplier")
+</div>

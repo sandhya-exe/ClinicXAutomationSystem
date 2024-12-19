@@ -1,0 +1,131 @@
+﻿@{
+    ViewBag.Title = "Supplier Dashboard";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <style>
+        /* Container for the cards */
+        .card-container {
+            display: flex;
+            justify-content: center; /* Center the cards horizontally */
+            align-items: flex-start; /* Align cards to the top */
+            gap: 40px; /* Space between cards */
+            margin-top: 50px;
+            width: 100%; /* Ensure the container takes full width */
+            padding: 20px;
+            flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+            margin-bottom:40px;
+        }
+
+        /* Style for individual card */
+        .card {
+            width: 100%; /* Full-width for responsiveness */
+            max-width: 400px; /* Increased card size */
+            background-color: #fff;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
+        }
+
+            /* Hover effect on card */
+            .card:hover {
+                transform: translateY(-10px); /* Lift the card on hover */
+            }
+
+        /* Card body styles */
+        .card-body {
+            padding: 20px;
+            text-align: center;
+            flex-grow: 1; /* Allow the card to grow if needed */
+        }
+
+        /* Image inside the card */
+        .card-img {
+            width: 100%; /* Full-width image */
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Card title styles */
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Button styling */
+        .btn {
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            display: block; /* Block-level button */
+            margin: 0 auto; /* Center align the button */
+            width: 80%; /* Make the button consistent across cards */
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .btn-primary {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+        }
+
+            .btn-primary:hover {
+                background-color: #565e64;
+            }
+
+        .btn-secondary {
+            background-color: #6c757d; /* Same color as primary for uniformity */
+            color: white;
+            border: none;
+        }
+
+            .btn-secondary:hover {
+                background-color: #565e64;
+            }
+
+        /* Heading styles */
+        h2 {
+            text-align: center;
+            margin-top: 120px; /* Added margin from the top */
+            margin-bottom: 30px; /* Added some spacing below the heading */
+            color: #333;
+            font-size: 2rem; /* Slightly larger font size */
+        }
+    </style>
+</head>
+<body>
+    <h2>Your Dashboard</h2>
+    <div class="card-container">
+        <!-- Card 1: View Orders -->
+        <div class="card">
+            <img src="~/Content/images/order2.png" alt="View Orders" class="card-img">
+            <div class="card-body">
+                <h3 class="card-title">Check Orders</h3>
+                <form class="d-flex" role="search" action="@Url.Action("ViewOrders", "Supplier")">
+                    <button type="submit" class="btn btn-primary">View</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Card 2: Supplied Orders -->
+        <div class="card">
+            <img src="~/Content/images/orderN.png" alt="Supplied Orders" class="card-img">
+            <div class="card-body">
+                <h3 class="card-title">Supplied Orders</h3>
+                <form class="d-flex" role="search" action="@Url.Action("ViewSuppliedOrders", "Supplier")">
+                    <button type="submit" class="btn btn-secondary">View</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

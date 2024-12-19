@@ -1,0 +1,158 @@
+﻿@{
+    ClinicXAutomationSystem.Models.CurrentUserModel usr = Session["CurrentUser"] as ClinicXAutomationSystem.Models.CurrentUserModel;
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Add Font Awesome for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Welcome</title>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 28px; /* Make the font size bigger */
+        }
+
+        .content {
+            padding-top: 30px;
+        }
+
+        /* Styling for Welcome and User's Name */
+        .welcome-text {
+            font-size: 24px;
+            color: #007bff; /* Blue color for 'Welcome' */
+            font-weight: bold;
+        }
+
+        .user-name {
+            font-size: 24px;
+            color: #28a745; /* Green color for the user's name */
+            font-weight: bold;
+        }
+
+        /* Styling the icon */
+        .welcome-icon {
+            color: #007bff; /* Match icon color with Welcome text */
+            margin-right: 10px; /* Add some space between icon and text */
+        }
+
+        h2 {
+            text-align: center;
+            color: #444;
+            margin: 20px 0;
+        }
+
+        .main-container {
+            display: flex;
+            height: 80vh; /* Occupies 70% of the viewport height */
+            width: 100%;
+            position: relative; /* For absolute positioning of the button */
+        }
+
+        .frm {
+            margin: 0;
+        }
+
+        .column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #left {
+            padding: 40px;
+        }
+
+        .column img {
+            max-width: 80%; /* Adjust image size */
+            max-height: 80%; /* Adjust image size */
+            object-fit: contain; /* Maintain aspect ratio */
+        }
+
+        /* Button Styles */
+
+
+
+
+
+
+
+
+
+        .btn {
+            background-color: #e7e7e7;
+            color: #333;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 20px;
+        }
+
+            .btn:hover {
+                background-color: #d6d6d6;
+                transform: translateY(-3px);
+            }
+
+        /* Center the button between the columns */
+        .view-appointment-btn {
+            position: absolute;
+            top: 100px; /* Adjust the vertical position */
+            left: 40%; /* Center horizontally */
+            transform: translateX(30%); /* Move the button slightly towards the right */
+            z-index: 10; /* Ensure the button is above the images */
+        }
+    </style>
+
+
+</head>
+<body>
+
+    <div class="content">
+        <!-- Welcome with Icon -->
+        <h2>
+            <i class="fas fa-user-circle welcome-icon"></i> <!-- User Icon -->
+            <span class="welcome-text">Welcome,</span>
+            <span class="user-name">@usr.UserName!!</span>
+        </h2>
+
+        <!-- View Appointment Button Positioned Above the Right Column -->
+
+        <div class="main-container">
+            <!-- Left Column -->
+            <div class="column">
+                <img src="~/Content/images/app1.png" alt="left Column Image" id="left" />
+            </div>
+            <div class="view-appointment-btn">
+            <form action="@Url.Action("ViewAppointment", "Physician")" class="frm">
+                <button class="btn custom-btn" type="submit">View Appointment</button>
+            </form>
+        </div>
+            <!-- Right Column -->
+            <div class="column">
+                <img src="~/Content/images/doc.png" alt="Right Column Image" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

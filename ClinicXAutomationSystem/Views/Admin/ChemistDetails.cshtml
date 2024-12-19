@@ -1,0 +1,46 @@
+﻿@model ClinicXAutomationSystem.Models.chemist
+
+
+@{
+    ViewBag.Title = "ChemistDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ChemistDetails</h2>
+
+
+
+<div>
+    <h4>chemist</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "ChemistEdit", new { id = Model.chemistID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

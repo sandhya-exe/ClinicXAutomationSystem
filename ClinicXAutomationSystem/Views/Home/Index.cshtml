@@ -1,0 +1,370 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<style>
+    /* Full-page background image */
+    .full-page-background {
+        background: url('/Content/images/ClinicalFront2.jpg') no-repeat center center;
+        background-size: cover;
+        height: calc(100vh - 56px);
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+        /*
+          Overlay to darken the image (optional) */
+        .full-page-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+    .full-page-background-content {
+        position: relative;
+        z-index: 2;
+        padding: 20px;
+    }
+
+    /*
+    banner section
+     */
+
+    .banner-section {
+        padding: 40px 0;
+        min-height: 400px;
+    }
+
+    .banner-text h2 {
+        font-size: 20px;
+        color: var(--main-color);
+    }
+
+    .banner-text h1 {
+        font-size: 45px;
+        font-weight: 700;
+    }
+
+    .banner-img img {
+        max-width: 80%; /* Adjust image width */
+        height: auto; /* Maintain aspect ratio */
+        display: block;
+        margin: 0 auto;
+    }
+
+    .container {
+        --bs-gutter-x: 15px;
+        max-width: 1120px;
+        /*        padding-top:20px;*/
+    }
+
+    .row {
+        --bs-gutter-x: 30px;
+    }
+    /*
+     .banner-section .circular-img-circle {
+         background-color: var(--red-light);
+     }*/
+
+
+    .fun-facts-item {
+        padding: 15px 0;
+    }
+
+        /*stats*/
+        .fun-facts-item h2 {
+            font-weight: 700;
+            font-size: 30px;
+            text-transform: uppercase;
+        }
+
+        .fun-facts-item p {
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .fun-facts-item .style-1 {
+            color: rgb(26, 26, 26);
+        }
+
+        .fun-facts-item .style-2 {
+            color: rgb(113, 206, 125);
+        }
+
+        .fun-facts-item .style-3 {
+            color: rgb(255, 143, 143);
+        }
+
+        .fun-facts-item .style-4 {
+            color: rgb(255, 174, 92);
+        }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: rgb(26, 26, 26);
+        line-height: 1.3;
+    }
+
+    .box {
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: var(--shadow); /* You can set the shadow property in your CSS variables or directly here */
+        padding: 30px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    /* Optional: You can style the text inside each .fun-facts-item if needed */
+    .fun-facts-item h2 {
+        font-size: 36px; /* Customize size for headings */
+        font-weight: 600; /* You can adjust this for more emphasis */
+    }
+
+    .fun-facts-item p {
+        font-size: 14px;
+        color: #6c757d; /* Light gray color for text */
+    }
+
+    #factss {
+        max-width: 1200px;
+        padding-top: 100px;
+    }
+    /* You may want to define your shadow variable if you haven't done so already */
+    :root {
+        --shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjust the shadow as per your preference */
+    }
+
+    /* Image Section Styling */
+    .image-section {
+        position: relative;
+        background: url('/Content/images/clinicalfrontImg.jpg') no-repeat center center fixed;
+        background-size: cover;
+        height: 100vh; /* Adjust height for desired effect */
+        width: 100%;
+        color: white;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin-top: 80px;
+    }
+
+    .image-content {
+        z-index: 2;
+        padding: 20px;
+        max-width: 600px;
+    }
+
+        .image-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .image-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+    .learn-more {
+        font-size: 1rem;
+        background-color: #FF6C69;
+        padding: 10px 20px;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+        .learn-more:hover {
+            background-color: #FF6F7E;
+        }
+
+    /* Gradient SVG Styling */
+    .gradient-svg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 20%;
+    }
+
+    /* Free Trial Section Styling */
+    .free-trial-section {
+        background-color: #f4f4f4;
+        padding: 60px 0; /* Gives space before and after */
+        text-align: center;
+    }
+
+        .free-trial-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .free-trial-section p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .free-trial-section .btn {
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+            .free-trial-section .btn:hover {
+                background-color: #218838;
+            }
+
+    /* Book Demo Section Styling */
+    .book-demo-section {
+        width: 100%;
+        height: 70vh; /* Half of the viewport height */
+        background: url('/Content/images/patient.png') no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: flex-end; /* Align content to the right */
+        align-items: end;
+    }
+
+    .demo-content {
+        text-align: right;
+        color: white;
+    }
+
+    .book-demo-link {
+        font-size: 1.5rem;
+        /*        background-color: rgba(0, 0, 0, 0.5);*/
+        padding: 15px 30px;
+        color: white;
+        text-decoration: none;
+        /*        border-radius: 5px;*/
+        transition: 0.3s ease;
+    }
+
+        .book-demo-link:hover {
+            text-decoration: underline;
+            color: #FF6F7E; /* Color change on hover */
+        }
+</style>
+
+
+<!-- Full-page background image -->
+<div class="container-fluid">
+    <div class="full-page-background">
+        <div class="full-page-background-content">
+            <h1>Welcome to CLINICx</h1>
+            <p>Your journey starts here</p>
+            <a href="@Url.Action("Services", "Home")" class="btn btn-primary">Learn More</a>
+            <p style="color: red;">Streamline your clinic operations with ease.</p>
+        </div>
+    </div>
+</div>
+
+
+    <!-- banner sec ends -->
+    <section class="banner-section d-flex align-items-center">
+        <div class="container ">
+            <div class="row align-items-center">
+                <div class="col-md-6 ">
+                    <div class="banner-text">
+                        <h2 class="mb-3">ClinicX is your one stop solution if you are looking for better healthcare services.</h2>
+                        <h1 class="mb-3 text-capitalize">Top class clinic services.</h1>
+                        <p class="mb-4">We help you manage your appointments, schedule and also provide services related to tests and labs. Join us to have an easier shot at managing health.</p>
+                        <a href="#" class="btn btn-theme">join for free</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="banner-img">
+                        <img src="~/content/images/bannner-img.png" alt="banner-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- banner sec ends -->
+    <!-- Fun facts section start -->
+    <section class="fun-facts-section">
+        <div class="container" id="factss">
+            <div class="box py-2">
+                <div class="row text-center">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="fun-facts-item">
+                            <h2 class="style-1">80+</h2>
+                            <p>Patient's</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="fun-facts-item">
+                            <h2 class="style-2">15+</h2>
+                            <p>Physician's</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="fun-facts-item">
+                            <h2 class="style-3">5+</h2>
+                            <p>countries</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="fun-facts-item">
+                            <h2 class="style-4">3+</h2>
+                            <p>Labs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Fun facts section end -->
+    <!-- Image Section with gradient -->
+    <section class="image-section">
+        <div class="image-container">
+            <div class="image-content">
+                <h2>2% of all subscriptions are donated to charity</h2>
+                <p>It's important to us that we’re making the world a little bit better. By donating at least 2% of all subscriptions to carefully selected charities, we ensure that by choosing our platform, you’re also doing your bit. Together we can make a tangible difference in people's lives.</p>
+                <a href="/charity/" class="learn-more">Find out about our charitable donations</a>
+            </div>
+        </div>
+        <svg class="gradient-svg" viewBox="0 0 100 100" preserveAspectRatio="none" width="100%" height="100%">
+            <defs>
+                <linearGradient id="gradient-red" x1="100%" y1="0" x2="0" y2="100%">
+                    <stop offset="30%" stop-color="#FF6C69"></stop>
+                    <stop offset="60%" stop-color="#FF6F7E"></stop>
+                </linearGradient>
+            </defs>
+            <polygon points="0,0 70,0 53,100 0,100" fill="url(#gradient-red)"></polygon>
+        </svg>
+    </section>
+
+
+    <!-- Free Trial Section -->
+    <section class="free-trial-section">
+        <div class="container text-center">
+            <h2>Free for 30 days</h2>
+            <p>Create an account to get full access to ClinicX. You’ll only be charged if you choose not to cancel your subscription at the end of your 30-day trial.</p>
+            <a href="/signup" class="btn btn-primary">Try ClinicX for Free</a>
+        </div>
+    </section>
+
+   

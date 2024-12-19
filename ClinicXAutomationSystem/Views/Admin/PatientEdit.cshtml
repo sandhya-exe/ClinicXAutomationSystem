@@ -1,0 +1,159 @@
+﻿@model ClinicXAutomationSystem.Models.patient
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Edit Patient</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Patient Details</h4>
+            <hr />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.patientID)
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DOB, "{0:yyyy-MM-dd}", new { @class = "form-control", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.contact, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.contact, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.contact, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.gender, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.gender, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row" style="display:none;">
+                @Html.LabelFor(model => model.account, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    @Html.HiddenFor(model => model.account)
+                    @Html.ValidationMessageFor(model => model.account, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.status, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+                <div class="col-md-10">
+                    <div class="form-check form-check-inline">
+                        @Html.RadioButtonFor(model => model.status, "ACTIVE", new { @class = "form-check-input", id = "statusActive" })
+                        <label class="form-check-label" for="statusActive">Active</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        @Html.RadioButtonFor(model => model.status, "INACTIVE", new { @class = "form-check-input", id = "statusInactive" })
+                        <label class="form-check-label" for="statusInactive">Inactive</label>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-10 offset-md-2">
+                    <input type="submit" value="Save" class="btn btn-success btn-lg" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="mt-4 text-center">
+        @Html.ActionLink("Back >", "Index", null, new { @class = "btn btn-outline-secondary btn-sm" })
+    </div>
+</div>
+
+<style>
+    .form-horizontal .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        font-weight: 600;
+        text-transform: uppercase; /* Make label text uppercase */
+    }
+
+    .form-check {
+        margin-top: 0.5rem;
+    }
+
+    .btn-success {
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-success:hover {
+            background-color: #28a745;
+        }
+
+    .form-control {
+        padding: 10px;
+        font-size: 1rem;
+        border-radius: 5px;
+    }
+
+        .form-control:focus {
+            border-color: #28a745;
+            box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+        }
+
+    .col-md-2 {
+        text-align: right;
+    }
+
+    .text-danger {
+        font-size: 0.875rem;
+    }
+
+    .mt-4 {
+        margin-top: 2rem;
+    }
+    .btn-outline-secondary {
+        margin-bottom: 20px; /* Add bottom margin to the "Back" button */
+    }
+
+    .text-center {
+        text-align: center;
+    }
+</style>

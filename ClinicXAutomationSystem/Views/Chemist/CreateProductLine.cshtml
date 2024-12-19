@@ -1,0 +1,19 @@
+﻿
+<tr>
+    <td class="slno" slno="@ViewBag.slno">
+        @(  int.Parse( ViewBag.slno )  +1)
+    </td>
+    <td>
+        <select drugCombo="unbound" class="form-control" name="PurchaseOrderDrugLines[@ViewBag.slno].DrugID"></select>
+    </td>
+    <td>
+        <input type="text" class="form-control" name="PurchaseOrderDrugLines[@ViewBag.slno].Qty">
+    </td>
+    <td>
+        <input type="text" class="form-control" name="PurchaseOrderDrugLines[@ViewBag.slno].Rate">
+    </td>
+
+    <td class="addnewRowTD">
+        <button id="AddNewRow" type="submit" class="btn btn-primary mb-3">Add New Row</button>
+    </td>
+</tr>

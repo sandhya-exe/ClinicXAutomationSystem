@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Style for Register Button */
+        .btn-register {
+            color: #ffffff;
+            border: 1px solid #ffffff;
+            background-color: transparent;
+            font-size: 0.9rem; /* Smaller text size */
+            padding: 0.6rem 1.5rem; /* Increase button size (height and width) */
+            margin-right: 20px; /* Add more space between buttons */
+        }
+
+        .ms-3 {
+            margin-right: 10px;
+            margin-left: 1rem !important;
+        }
+        /* Hover effect for Register Button */
+        .btn-register:hover {
+            background-color: #eeeee4; /* Light hover color */
+            color: #029FB5; /* Text and icon color on hover */
+            border: 1px solid #eeeee4; /* Match border to hover color */
+        }
+
+        /* Ensure both buttons have the same appearance */
+        .btn-login, .btn-register {
+            color: #ffffff;
+            border: 1px solid #ffffff;
+            background-color: transparent;
+        }
+
+            .btn-login:hover, .btn-register:hover {
+                background-color: #eeeee4; /* Light hover color */
+                color: #029FB5; /* Text and icon color on hover */
+                border: 1px solid #eeeee4; /* Match border to hover color */
+            }
+
+        /* Add margin between buttons */
+        .btn-login {
+            margin-right: 10px; /* Add space between Login and Register buttons */
+        }
+        /* Button hover styles */
+        .btn-outline-light {
+            color: #ffffff; /* White text and icon */
+            border: 1px solid #ffffff; /* White border */
+            background-color: transparent;
+        }
+
+            .btn-outline-light:hover {
+                background-color: #eeeee4; /* Light hover color */
+                color: #029FB5; /* Text and icon color on hover */
+                border: 1px solid #eeeee4; /* Match border to hover color */
+            }
+
+        /* Sticky footer styles */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .body-content {
+            flex: 1;
+        }
+
+        footer {
+            margin-top: auto;
+        }
+    </style>
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+
+    @*Navbar*@
+    <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #029FB5;">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="@Url.Action("Index", "Home")">
+                <i class="fas fa-hospital me-2"></i>ClinicX
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="@Url.Action("Features", "Home")">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="@Url.Action("Drug", "Home")">Drug</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="@Url.Action("Services", "Home")">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="@Url.Action("Support", "Home")">Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="@Url.Action("ContactUs", "Home")">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        @if (ViewContext.RouteData.Values["Controller"].ToString() == "Home" && ViewContext.RouteData.Values["Action"].ToString() == "Index")
+        {
+            <button class="btn btn-outline-light ms-3" type="button" onclick="location.href='@Url.Action("Register", "Register")'">
+                <i class="fas fa-user-plus me-2"></i> Register As Patient
+            </button>
+        }
+
+        @*<form class="d-flex" role="search">
+                    <button class="btn btn-outline-light ms-3" type="button" onclick="location.href='@Url.Action("Register", "Register")'">
+                        <i class="fas fa-user-plus me-2"></i> Register As Patient
+                    </button>
+                    <button class="btn btn-outline-light ms-3" type="button" onclick="location.href='@Url.Action("Login", "SecurityCredI")'">Login</button>
+                </form>
+            </div>
+        </div>*@
+        <div>
+            @if (User.Identity.IsAuthenticated == true)
+            {
+                ClinicXAutomationSystem.Models.CurrentUserModel usr = Session["CurrentUser"] as ClinicXAutomationSystem.Models.CurrentUserModel;
+
+
+
+
+
+                if (usr != null)
+                {
+                    <div class="container-fluid ">
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav">
+                               <li class="nav-item dropdown">
+                                   <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="">
+                                       <i class="fas fa-user me-2"></i> Welcome @usr.FirstName
+                                   </a>
+                                   <ul class="dropdown-menu">
+                                       <li><a class="dropdown-item" href="@Url.Action("Logout","SecurityCredi")">Logout</a></li>
+                                   </ul>
+                               </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                }
+
+            }
+
+
+            @if (User.Identity.IsAuthenticated == false)
+            {
+
+                <form class="d-flex" role="search" action="@Url.Action("Login", "SecurityCredi")">
+                    <button class="btn btn-outline-light btn-login" type="submit">Login</button>
+                </form>
+            }
+
+
+
+
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <footer>
+        <section class="">
+            <!-- Footer -->
+            <footer class="text-center text-white" style="background-color: #029FB5;">
+                <!-- Grid container -->
+                <div class="container p-4 pb-0">
+                    <!-- Section: CTA -->
+                    <section class="">
+                        <p class="d-flex justify-content-center align-items-center">
+                            <span class="me-3">"Healing is a matter of time, but it is sometimes also a matter of opportunity. ClinicX: Where care meets innovation."</span>
+                            
+                        </p>
+                    </section>
+                    <!-- Section: CTA -->
+                </div>
+                <!-- Grid container -->
+                <!-- Copyright -->
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                    © 2020 Copyright:
+                    <a class="text-white">ClinicX.com</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
+            <!-- Footer -->
+        </section>
+    </footer>
+
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    @RenderSection("Scripts", false)
+
+</body>
+</html>

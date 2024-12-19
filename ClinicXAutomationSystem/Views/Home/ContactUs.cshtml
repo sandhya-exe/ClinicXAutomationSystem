@@ -1,0 +1,171 @@
+﻿
+@{
+    ViewBag.Title = "ContactUs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="contact-banner">
+    <div class="contact-banner-content">
+        <h2>Get in touch</h2>
+        <p>Our team is here to help! Please don’t hesitate to reach out if you have any questions at all.</p>
+    </div>
+</div>
+
+
+<div class="help-section">
+    <h2 class="help-heading">How can we help?</h2>
+    <div class="help-cards">
+         @*Card 1: Send Us a Message*@ 
+        <div class="help-card">
+            <i class="fas fa-envelope help-icon"></i>
+            <h3>Send Us a Message</h3>
+            <p>We'll get back to you quickly, typically within an hour.</p>
+            <a href="#contact" class="help-link">Phone: 08268283542</a>
+        </div>
+
+         @*Card 2: Support*@ 
+        <div class="help-card">
+            <i class="fas fa-headset help-icon"></i>
+            <h3>Support</h3>
+            <p>Request Technical Support<br>Toll Free: 1-800-899-4237 x1</p>
+            <a href="#support" class="help-link">Contact Support</a>
+        </div>
+
+         @*Card 3: Sales*@ 
+        <div class="help-card">
+            <i class="fas fa-chart-line help-icon"></i>
+            <h3>Email Us</h3>
+            <p>Request a Live Demo<br>Mail: abc@gmail.com</p>
+            <a href="#sales" class="help-link">Contact Sales</a>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    /* Contact Banner Section Styling */
+    .contact-banner {
+        position: relative;
+        width: 100%;
+        height: 60vh; /* 60% of the viewport height */
+        background-image: url('../../content/images/contact.png'); /* Replace with your image path */
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .contact-banner-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Center the text vertically and horizontally */
+        text-align: center;
+        color: white;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* Add text shadow for better readability */
+    }
+
+    .contact-banner h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .contact-banner p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    /* Help Section Styling */
+    .help-section {
+        width: 100%;
+        height: 100vh; /* Full viewport height */
+        background-color: #f9f9f9; /* Light background for contrast */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    .help-heading {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #4b384c;
+        margin-bottom: 4rem;
+        text-align: center;
+    }
+
+    .help-cards {
+        display: flex;
+        justify-content: space-around;
+        align-items: stretch;
+        width: 100%;
+        max-width: 1200px;
+        gap: 2rem;
+    }
+
+    .help-card {
+        min-height: 350px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .help-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+    .help-icon {
+        font-size: 2.5rem;
+        color: #007fa3;
+        /*    margin-bottom: 1rem;*/
+    }
+
+    .help-card h3 {
+        font-size: 1.5rem;
+        color: #4b384c;
+        /*    margin-bottom: 1rem;*/
+    }
+
+    .help-card p {
+        font-size: 1rem;
+        color: #555;
+        /*    margin-bottom: 1rem;*/
+    }
+
+    .help-link {
+        font-size: 1rem;
+        color: #007fa3;
+        font-weight: bold;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+        .help-link:hover {
+            color: #005f7a;
+        }
+
+    /* Responsive Styles */
+    @@media screen and (max-width: 768px) {
+        .help-cards {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .help-card {
+            width: 90%;
+            margin-bottom: 2rem;
+        }
+    }
+</style>
+

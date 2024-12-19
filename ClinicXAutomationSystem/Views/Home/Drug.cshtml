@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ClinicXAutomationSystem.Models.drug>
+
+@{
+    ViewBag.Title = "Drug";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center my-4">Available Drugs</h2>
+
+<table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Drug Name</th>
+            <th>Drug Description</th>
+            <th>Price</th>
+            <th>Expiry</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.name)</td>
+                <td>@Html.DisplayFor(modelItem => item.description)</td>
+                <td>@Html.DisplayFor(modelItem => item.price)</td>
+                <td>@Html.DisplayFor(modelItem => item.expiry)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    h2 {
+        font-family: 'Arial', sans-serif;
+        color: #343a40;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    table {
+        width: 100%;
+        margin: auto;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 10px;
+    }
+
+    th {
+        background-color: #343a40;
+        color: white;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #d4edda;
+    }
+</style>
+

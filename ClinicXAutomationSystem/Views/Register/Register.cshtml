@@ -1,0 +1,254 @@
+﻿@*@model ClinicXAutomationSystem.Models.patient
+
+    @{
+        ViewBag.Title = "Register";
+    }
+
+    <h2>Register </h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+
+@*<div class="form-group">
+            @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DOB, new
+           {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control",
+                        type = "date",
+                        max = DateTime.Now.ToString("yyyy-MM-dd")
+                    }
+           })
+                @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.contact, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.contact, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.contact, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Gender", htmlAttributes: new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.DropDownList("gender", new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Male", Value = "MALE" },
+                    new SelectListItem { Text = "Female", Value = "FEMALE" },
+                    new SelectListItem { Text = "Other", Value = "OTHER" }
+                }, "Select Gender", new { @class = "form-control" })
+                @Html.ValidationMessage("gender", "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+
+@model ClinicXAutomationSystem.Models.patient
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<!-- Full-screen background image and centered form -->
+<div class="bg-cover bg-center flex items-center justify-center min-h-screen" style="background-image: url('/Content/images/bg1.jpg');">
+    <div class="form-container">
+        <h1 class="text-2xl font-bold text-center text-purple-900 mb-4" style="font-family: 'Nunito', sans-serif;">
+            Register Your Account
+        </h1>
+        <p class="text-center text-gray-700 mb-6" style="font-family: 'Open Sans', sans-serif;">
+            Fill in the details to create your ClinicX account.
+        </p>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group mb-4">
+                @Html.LabelFor(model => model.name, "Your Name", new { @class = "block text-gray-700 mb-2", style = "font-family: 'Open Sans', sans-serif;" })
+                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "w-full p-2 border border-gray-300 rounded" } })
+                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-4">
+                @Html.LabelFor(model => model.DOB, "Date of Birth", new { @class = "block text-gray-700 mb-2", style = "font-family: 'Open Sans', sans-serif;" })
+                @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "w-full p-2 border border-gray-300 rounded", type = "date", max = DateTime.Now.ToString("yyyy-MM-dd") } })
+                @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-4">
+                @Html.LabelFor(model => model.contact, "Contact Number", new { @class = "block text-gray-700 mb-2", style = "font-family: 'Open Sans', sans-serif;" })
+                @Html.EditorFor(model => model.contact, new { htmlAttributes = new { @class = "w-full p-2 border border-gray-300 rounded" } })
+                @Html.ValidationMessageFor(model => model.contact, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-4">
+                @Html.LabelFor(model => model.email, "Email Address", new { @class = "block text-gray-700 mb-2", style = "font-family: 'Open Sans', sans-serif;" })
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "w-full p-2 border border-gray-300 rounded" } })
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-4">
+                @Html.LabelFor(model => model.address, "Address", new { @class = "block text-gray-700 mb-2", style = "font-family: 'Open Sans', sans-serif;" })
+                @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "w-full p-2 border border-gray-300 rounded" } })
+                @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-4">
+                @Html.Label("Gender", htmlAttributes: new { @class = "block text-gray-700 mb-2", style = "font-family: 'Open Sans', sans-serif;" })
+                @Html.DropDownList("gender", new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Male", Value = "MALE" },
+                    new SelectListItem { Text = "Female", Value = "FEMALE" },
+                    new SelectListItem { Text = "Other", Value = "OTHER" }
+                }, "Select Gender", new { @class = "w-full p-2 border border-gray-300 rounded" })
+                @Html.ValidationMessage("gender", "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mb-4 text-center">
+                <button type="submit" class="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition-all duration-300" style="font-family: 'Open Sans', sans-serif;">
+                    Register
+                </button>
+            </div>
+
+        <hr class="my-6 border-t border-gray-200">
+
+        <p class="text-center text-gray-700" style="font-family: 'Open Sans', sans-serif;">
+            Already have an account?<br>
+            <a href="/Login/Login" class="text-blue-600">Login here</a>
+        </p>
+        }
+</div>
+
+<!-- CSS Styling -->
+<style>
+    /* Full-screen background image */
+    .bg-cover {
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    /* Form container styling */
+    .form-container {
+        background-color: rgba(255, 255, 255, 0.8); /* Slight transparency for readability */
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 550px; /* Maximum width for the form */
+    }
+
+        /* Text and button styles */
+        .form-container h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            color: #4C1D95; /* Purple */
+            margin-bottom: 1rem;
+        }
+
+        .form-container p {
+            font-size: 1rem;
+            text-align: center;
+            color: #4A5568; /* Gray */
+            margin-bottom: 1.5rem;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #F56565; /* Red */
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+            .form-container input[type="submit"]:hover {
+                background-color: #E53E3E; /* Darker Red on hover */
+            }
+
+        .form-container hr {
+            margin-top: 1.5rem;
+            border-top: 1px solid #E2E8F0;
+        }
+
+        .form-container a {
+            color: #3182CE; /* Blue */
+            text-decoration: none;
+        }
+
+            .form-container a:hover {
+                text-decoration: underline;
+            }
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+        .form-group button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #F56565; /* Tailwind's bg-red-600 equivalent */
+            color: white;
+            border-radius: 0.375rem;
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+            .form-group button:hover {
+                background-color: #E53E3E; /* Tailwind's bg-red-700 equivalent */
+            }
+</style>
+

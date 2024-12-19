@@ -1,0 +1,24 @@
+﻿
+@model IEnumerable<ClinicXAutomationSystem.Models.prescription>
+
+<h5>Prescription Details</h5>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Drug Name</th>
+            <th>Dosage</th>
+            <th>Note</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var prescription in Model)
+        {
+            <tr>
+                <td>@prescription.drug.name</td>
+                <td>@prescription.dosage</td>
+                <td>@prescription.note</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,169 @@
+﻿@model IEnumerable<ClinicXAutomationSystem.Models.patient>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+  
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            color: #555;
+            margin: 20px 0;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px auto;
+            padding: 10px;
+            max-width: 1200px;
+        }
+
+        .card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s;
+            width: 280px;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            background-color: #e7e7e7;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #d6d6d6;
+        }
+
+        @@media (max-width: 768px) {
+            .card-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Welcome</h2>
+
+    <div class="card-container">
+        <div class="card">
+            <img src="~/Content/images/appointment1.png" alt="Create Appointment">
+            <div class="card-body">
+                <h3 class="card-title">Create Appointment</h3>
+                <p class="card-text">Schedule a new appointment for the patient with a physician.</p>
+                <form action="@Url.Action("CreateAppointment", "Patient")">
+                    <button type="submit" class="btn">
+                    Create</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="~/Content/images/Appointment2.png" alt="View All Appointments">
+            <div class="card-body">
+                <h3 class="card-title">View All Appointments</h3>
+                <p class="card-text">Check the list of all scheduled appointments.</p>
+                <form action="@Url.Action("ViewAllAppointment", "Patient")">
+                    <button type="submit" class="btn">
+                    View</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="~/Content/images/appointment3.png" alt="View Advice">
+            <div class="card-body">
+                <h3 class="card-title">View Advice</h3>
+                <p class="card-text">Review medical advice provided by physicians.</p>
+                <form action="@Url.Action("ViewAdvice", "Patient")">
+                    <button type="submit" class="btn">
+                    View</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="~/Content/images/appointment4.png" alt="Edit Details">
+            <div class="card-body">
+                <h3 class="card-title">Edit Details</h3>
+                <p class="card-text">Update personal or medical information of the patient.</p>
+                <form action="@Url.Action("EditDetails", "Patient")">
+                    <button type="submit" class="btn">
+                    Edit</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="~/Content/images/appointment5.png" alt="History">
+            <div class="card-body">
+                <h3 class="card-title">History</h3>
+                <p class="card-text">Access the patient’s medical and appointment history.</p>
+                <form action="@Url.Action("AddViewHistory", "Patient")">
+                    <button type="submit" class="btn">
+                    View</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

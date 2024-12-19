@@ -1,0 +1,67 @@
+﻿@model ClinicXAutomationSystem.Models.patient
+
+@{
+    ViewBag.Title = "Edit Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mb-4 text-center">Edit Details</h2>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <!-- Name Field -->
+            <div class="form-group col-md-6 mb-3">
+                @Html.LabelFor(model => model.name, "Name", new { @class = "form-label" })
+                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+            </div>
+
+            <!-- Contact Field -->
+            <div class="form-group col-md-6 mb-3">
+                @Html.LabelFor(model => model.contact, "Contact", new { @class = "form-label" })
+                @Html.EditorFor(model => model.contact, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.contact, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Email Field -->
+            <div class="form-group col-md-6 mb-3">
+                @Html.LabelFor(model => model.email, "Email", new { @class = "form-label" })
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            </div>
+
+            <!-- Address Field -->
+            <div class="form-group col-md-6 mb-3">
+                @Html.LabelFor(model => model.address, "Address", new { @class = "form-label" })
+                @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Gender Field (Read-only) -->
+            <div class="form-group col-md-6 mb-3">
+                @Html.LabelFor(model => model.gender, "Gender", new { @class = "form-label" })
+                <p class="form-control-plaintext">@Model.gender</p>
+            </div>
+
+            <!-- Status Field (Read-only) -->
+            <div class="form-group col-md-6 mb-3">
+                @Html.LabelFor(model => model.status, "Status", new { @class = "form-label" })
+                <p class="form-control-plaintext">@Model.status</p>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary px-4">Save</button>
+        </div>
+    }
+</div>
+<div>
+    @Html.ActionLink("Back to Dashboard", "Index", "Patient")
+</div>

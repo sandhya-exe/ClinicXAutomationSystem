@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f55362592d874f5e8aaeb13abb407eed" Name="Diagram1" ZoomLevel="69">
+        <EntityTypeShape EntityType="ClinicDBModel.advice" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicDBModel.Appointment" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicDBModel.chemist" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicDBModel.drug" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicDBModel.patient" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicDBModel.physician" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicDBModel.PODrugLine" Width="1.5" PointX="12.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicDBModel.POHeader" Width="1.5" PointX="10" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicDBModel.prescription" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicDBModel.User" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="ClinicDBModel.FK__advice__Appointm__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicDBModel.FK__prescript__advic__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicDBModel.FK__Appointme__patie__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicDBModel.FK__Appointme__physi__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicDBModel.FK__prescript__drugI__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicDBModel.FK_PODrugLine_drugs" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicDBModel.FK_PODrugLine_PODHeader" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ClinicDBModel.supplier" Width="1.5" PointX="7.75" PointY="5" />
+        <AssociationConnector Association="ClinicDBModel.FK_POHeader_suppliers" />
+        <EntityTypeShape EntityType="ClinicDBModel.PatientSymptom" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="ClinicDBModel.symptom" Width="1.5" PointX="3.75" PointY="13.75" />
+        <AssociationConnector Association="ClinicDBModel.FK__PatientSy__Patie__6477ECF3" />
+        <AssociationConnector Association="ClinicDBModel.FK__PatientSy__Sympt__656C112C" />
+        <EntityTypeShape EntityType="ClinicDBModel.patientHistory" Width="1.5" PointX="3" PointY="16.5" />
+        <EntityTypeShape EntityType="ClinicDBModel.patientReport" Width="1.5" PointX="3" PointY="5.625" />
+        <AssociationConnector Association="ClinicDBModel.FK__patientHi__patie__6B24EA82" />
+        <AssociationConnector Association="ClinicDBModel.FK__patientRe__patie__68487DD7" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

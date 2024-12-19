@@ -1,0 +1,68 @@
+﻿@model ClinicXAutomationSystem.Models.physician
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="bg-cover bg-center min-h-screen flex items-center justify-center" style="background-image: url('/Content/images/bg1.jpg');">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-3xl font-semibold text-center text-purple-800 mb-4">Create Physician Account</h2>
+        <p class="text-center text-gray-600 mb-6">Fill in the details to add a new physician to ClinicX.</p>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger text-center mb-4" })
+
+                <div class="mb-4">
+                    @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "block text-gray-700 font-medium mb-2" })
+                    @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" } })
+                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-4">
+                    @Html.LabelFor(model => model.Specialisation, htmlAttributes: new { @class = "block text-gray-700 font-medium mb-2" })
+                    @Html.EditorFor(model => model.Specialisation, new { htmlAttributes = new { @class = "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" } })
+                    @Html.ValidationMessageFor(model => model.Specialisation, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-4">
+                    @Html.LabelFor(model => model.contact, htmlAttributes: new { @class = "block text-gray-700 font-medium mb-2" })
+                    @Html.EditorFor(model => model.contact, new { htmlAttributes = new { @class = "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" } })
+                    @Html.ValidationMessageFor(model => model.contact, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-4">
+                    @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "block text-gray-700 font-medium mb-2" })
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-4">
+                    @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "block text-gray-700 font-medium mb-2" })
+                    @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" } })
+                    @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-4">
+                    @Html.LabelFor(model => model.regNO, htmlAttributes: new { @class = "block text-gray-700 font-medium mb-2" })
+                    @Html.EditorFor(model => model.regNO, new { htmlAttributes = new { @class = "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600" } })
+                    @Html.ValidationMessageFor(model => model.regNO, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-6 text-center">
+                    <input type="submit" value="Create" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                </div>
+            </div>
+        }
+
+        <div class="text-center mt-4">
+            @Html.ActionLink("Back >", "Index", new { @class = "text-purple-600 hover:underline" })
+        </div>
+    </div>
+</div>
+
+<!-- TailwindCSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>

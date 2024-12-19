@@ -1,0 +1,209 @@
+﻿
+@{
+    ViewBag.Title = "Services";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<div class="site-inner" role="main" itemprop="mainContentOfPage">
+    <section id="flexible-section-repeater">
+        <section class="product-features-section page-flexible-section color">
+            <div class="wrap">
+                <div class="upper-content has-text text-center">
+                    <div class="upper-content-left">
+                        <h2 class="section-title">Our Products and Services</h2>
+                        <h5 class="section-subtitle">Patient-First Solutions</h5>
+                    </div>
+                    <div class="upper-content-right">
+                        <p>
+                            <strong>ClinicX: Revolutionizing Healthcare Management</strong> ClinicX offers a state-of-the-art platform Designed with both healthcare providers and patients in mind, ClinicX streamlines daily operations, reduces administrative burdens, and enhances the overall patient experience.ClinicX empowers clinics to optimize their workflows, and deliver seamless, patient-centered care. From appointment scheduling and billing to secure patient record management, ClinicX combines advanced tools into a unified system to help healthcare providers focus on what matters most—delivering exceptional care..
+                        </p>
+                    </div>
+                </div>
+
+                 @*Cards Section*@ 
+                <div class="feature-grid">
+                     ClinicX Card 
+                    <a class="feature tac" href="@Url.Action("Home")" target="_blank">
+                        <div class="inner-feature">
+                            <div class="feature-image-wrap">
+                                <i class="fas fa-credit-card feature-icon"></i>
+                            </div>
+                            <h5 class="feature-title"> Appointment Scheduling</h5>
+                        </div>
+                        <div class="feature-info">
+                            <p class="feature-text">ClinicX Appointment Scheduling allows patients to book appointments online, while enabling your staff to efficiently manage schedules, reduce no-shows, and optimize clinic operations.</p>
+                            <span class="feature-button">View Full Feature</span>
+                        </div>
+                    </a>
+
+                     @*Benchmark PM Card*@ 
+                    <a class="feature tac" href="@Url.Action("Home", "Home")" target="_blank">
+                        <div class="inner-feature">
+                            <div class="feature-image-wrap">
+                                <i class="fas fa-user-md feature-icon"></i>
+                            </div>
+                            <h5 class="feature-title">ClinicX Management</h5>
+                        </div>
+                        <div class="feature-info">
+                            <p class="feature-text">ClinicX PM streamlines everything from appointment scheduling and task delegation to accounting. Maximize efficiency and elevate your clinic’s operational productivity.</p>
+                            <span class="feature-button">View Full Feature</span>
+                        </div>
+                    </a>
+
+                     @*Benchmark EHR Card*@ 
+                    <a class="feature tac" href="@Url.Action("Home", "Home")" target="_blank">
+                        <div class="inner-feature">
+                            <div class="feature-image-wrap">
+                                <i class="fas fa-hospital-alt feature-icon"></i>
+                            </div>
+                            <h5 class="feature-title">ClinicX Analytics Part</h5>
+                        </div>
+                        <div class="feature-info">
+                            <p class="feature-text">ClinicX Analytics provides powerful reporting tools to help you make informed decisions. Track patient outcomes, financial performance, and operational metrics to continuously improve your clinic’s services.</p>
+                            <span class="feature-button">View Full Feature</span>
+                        </div>
+                    </a>
+
+                     @*Benchmark ProTech Card*@ 
+                    <a class="feature tac" href="@Url.Action("Home", "Home")" target="_blank">
+                        <div class="inner-feature">
+                            <div class="feature-image-wrap">
+                                <i class="fas fa-desktop feature-icon"></i>
+                            </div>
+                            <h5 class="feature-title">ClinicX IT Solutions</h5>
+                        </div>
+                        <div class="feature-info">
+                            <p class="feature-text">ClinicX IT Solutions acts as your dedicated IT team, providing reliable technical support, infrastructure management, and cutting-edge security for your clinic.</p>
+                            <span class="feature-button">View Full Feature</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </section>
+</div>
+
+
+<style>
+
+    /* General Section Styling */
+    .product-features-section {
+        background-color: #f5f5f5;
+        padding: 40px;
+    }
+
+    .wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .upper-content {
+        height: 60vh;
+        display: flex;
+        margin-bottom: 30px;
+    }
+
+    .upper-content-left {
+        flex: 1 1 33%;
+        padding-right: 20px;
+    }
+
+    .upper-content-right {
+        flex: 2 1 66%;
+    }
+
+    .upper-content .section-title {
+        font-size: 2rem;
+        color: #003366;
+    }
+
+    .upper-content .section-subtitle {
+        font-size: 1.3rem;
+        color: #00b4cc;
+    }
+
+    .section-text p {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .feature-grid {
+        display: flex;
+        gap: 20px;
+        margin-top: 30px;
+        justify-content: space-between;
+    }
+
+    .feature {
+        flex: 1;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        display: block;
+        text-decoration: none;
+    }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+    .inner-feature {
+        padding: 20px;
+    }
+
+    .feature-image-wrap {
+        font-size: 3rem;
+        color: #00b4cc;
+        margin-bottom: 15px;
+    }
+
+    .feature-title {
+        font-size: 1.2rem;
+        color: #003366;
+        font-weight: bold;
+    }
+
+    .feature-info {
+        background-color: #f7f7f7;
+        padding: 15px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .feature-info-title {
+        font-size: 1.1rem;
+        color: #003366;
+    }
+
+    .feature-text {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .feature-button {
+        display: inline-block;
+        background-color: #00b4cc;
+        color: white;
+        padding: 8px 15px;
+        margin-top: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+        .feature-button:hover {
+            background-color: #007a87;
+        }
+
+    .feature-icon {
+        font-size: 50px;
+    }
+</style>

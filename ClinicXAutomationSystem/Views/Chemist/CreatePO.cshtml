@@ -1,0 +1,346 @@
+﻿
+@{
+    ViewBag.Title = "CreatePO";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model  ClinicXAutomationSystem.Models.POHeader
+
+
+<head>
+    <style>
+        /* Global Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4; /* Light background */
+            color: #333; /* Dark text color */
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            font-size: 2em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-horizontal {
+            background-color: #fff; /* White background for form */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .form-group .control-label {
+                color: #555; /* Slightly darker label color */
+                font-size: 1rem;
+                margin-bottom: 5px;
+            }
+
+            .form-group input, .form-group select {
+                padding: 10px;
+                font-size: 1rem;
+                border: 1px solid #ddd; /* Light border */
+                border-radius: 4px;
+                background-color: #f9f9f9; /* Very light gray input background */
+                color: #333;
+            }
+
+                .form-group input:focus, .form-group select:focus {
+                    border-color: #888; /* Focused border color */
+                    outline: none;
+                }
+
+            .form-group .text-danger {
+                font-size: 0.875rem;
+                color: #d9534f; /* Red color for validation errors */
+            }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd; /* Light border */
+        }
+
+        th {
+            background-color: #f8f8f8; /* Light gray for header */
+            color: #555;
+            font-size: 1rem;
+        }
+
+        td {
+            background-color: #fff; /* White background for cells */
+        }
+
+        tr:hover td {
+            background-color: #f1f1f1; /* Light hover effect */
+        }
+
+        .slno {
+            color: #777; /* Light gray text for serial numbers */
+        }
+
+        /* Button Styling */
+        button, .btn-primary {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #007bff; /* Blue background for the button */
+            border: none;
+            border-radius: 5px;
+            color: white; /* White text */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            button:hover, .btn-primary:hover {
+                background-color: #0056b3; /* Darker blue on hover */
+            }
+
+            button:focus, .btn-primary:focus {
+                outline: none;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            }
+
+        /* Add New Row Button */
+        #AddNewRow {
+            background-color: #007bff; /* Blue background */
+            color: white; /* White text */
+        }
+
+            #AddNewRow:hover {
+                background-color: #0056b3; /* Darker blue on hover */
+            }
+
+        /* Prescription Table Styling */
+        .addnewRowTD {
+            text-align: center;
+            padding: 15px;
+        }
+
+        /* Miscellaneous */
+        .col-md-10 {
+            padding-left: 0;
+        }
+
+        .form-group select {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+        }
+
+        .col-md-offset-2 {
+            margin-left: 15%;
+        }
+
+        .container {
+            margin-top: 30px;
+        }
+
+        /* Optional: Additional margin for top */
+        .mt-4 {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+
+
+<h2>Create Purchase Order</h2>
+<i class="bi bi-prescription"></i>
+
+@using (Html.BeginForm())
+{
+
+
+    <div id="datalistDrugs" hidden>
+
+        @foreach (var item in ViewBag.Drugs)
+        {
+            <option value="@item.drugID">@item.name </option>
+        }
+
+    </div>
+
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*<div class="form-group">
+            <input type="datetime-local"
+                   id="PODate"
+                   name="PODate"
+                   class="form-control"
+                   value="@(Model.PODate.HasValue ? Model.PODate.Value.ToString("yyyy-MM-ddTHH:mm") : "")" />
+
+        </div>*@
+
+        @*<div class="form-group">
+            <input type="datetime-local"
+                   id="PODate"
+                   name="Date"
+                   class="form-control"
+                   value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
+        </div>*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.PODate, "PO Date", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <!-- Display PODate as Read-Only in 'yyyy-MM-ddTHH:mm' format -->
+                <input type="text" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" readonly />
+
+                <!-- Hidden input field to submit PODate value -->
+                @Html.HiddenFor(model => model.PODate)
+
+                @Html.ValidationMessageFor(model => model.PODate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SupplierId, "Supplier Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("SupplierID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SupplierId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+    </div>
+
+    <table id="tblDrugLine" class="table">
+        <tr>
+            <th>
+                Sl. No.
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PODrugLines.First().drug.name)
+                @Html.Label("Drug Name")
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.PODrugLines.First().Qty)
+                @Html.Label("Quantity")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PODrugLines.First().Rate)
+                @Html.Label("Rate")
+            </th>
+
+        </tr>
+
+
+        <tr>
+            <td class="slno">
+                1
+            </td>
+            <td>
+                <select drugCombo="unbound" class="form-control" name="PODrugLines[0].DrugID">
+                </select>
+            </td>
+            <td>
+                <input type="text" class="form-control" name="PODrugLines[0].Qty">
+            </td>
+            <td>
+                <input type="text" class="form-control" name="PODrugLines[0].Rate">
+            </td>
+
+            <td class="addnewRowTD">
+                <button id="AddNewRow" type="submit" class="btn btn-primary mb-3">Add New Drug</button>
+            </td>
+        </tr>
+
+
+    </table>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Add Order" class="btn btn-primary" />
+        </div>
+    </div>
+
+}
+<div>
+    @Html.ActionLink("Back to Dashboard", "Index", "Chemist")
+</div>
+
+
+
+
+
+
+
+@section Scripts
+{
+
+    <script>
+        var _SlNo = 0
+
+
+
+
+        $(function () {
+
+
+            BindAddNewButton()
+
+
+        })
+
+        function BindAddNewButton() {
+
+
+
+
+            $("#AddNewRow").click(function (e) {
+                e.preventDefault()
+                _SlNo++
+
+                $.ajax({
+                    url: "/Chemist/CreateProductLine/" + _SlNo, // Controller endpoint
+                    type: "GET",
+
+                    success: function (data) {
+                        $(".addnewRowTD").html(" ")
+
+                        $("#tblDrugLine").append(data);
+
+                        BindAddNewButton()
+
+
+                    },
+                    error: function () {
+                        $("#Notify").html("<p>Error loading details.</p>");
+                    }
+                });
+
+
+
+            })
+
+            $("select[drugCombo*='unbound']").html($("#datalistDrugs").html()).attr("drugCombo", "bound")
+        }</script>
+
+
+}
+

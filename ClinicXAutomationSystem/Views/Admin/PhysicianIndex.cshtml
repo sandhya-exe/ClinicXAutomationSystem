@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ClinicXAutomationSystem.Models.physician>
+@{
+    ViewBag.Title = "Physician Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    th {
+        text-transform: uppercase;
+    }
+
+    /* Style for the buttons */
+    .custom-btn {
+        font-size: 1rem;
+        line-height: 1.5rem;
+        border: 2px solid #CC3057; /* Border color */
+        color: #CC3057; /* Text color */
+        background-color: transparent; /* Transparent background */
+        padding: 0.72rem 1.5rem 0.78rem;
+        border-radius: 6px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease; /* Smooth transition for hover effects */
+        display: inline-flex;
+        align-items: center;
+    }
+
+        .custom-btn:hover {
+            background-color: #CC3057; /* On hover, background becomes #CC3057 */
+            color: white; /* Text turns white */
+            border: 2px solid white; /* Border turns white */
+        }
+</style>
+
+
+<h2 class="text-center my-4">
+    <i class="fas fa-user-md"></i> PHYSICIAN INDEX
+</h2>
+
+<table class="table table-striped table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.name) <i class="fas fa-user"></i></th>
+            <th>@Html.DisplayNameFor(model => model.Specialisation) <i class="fas fa-stethoscope"></i></th>
+            <th>@Html.DisplayNameFor(model => model.contact) <i class="fas fa-phone"></i></th>
+            <th>@Html.DisplayNameFor(model => model.email) <i class="fas fa-envelope"></i></th>
+            <th>@Html.DisplayNameFor(model => model.address) <i class="fas fa-map-marker-alt"></i></th>
+            <th>@Html.DisplayNameFor(model => model.regNO) <i class="fas fa-id-card"></i></th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Specialisation)</td>
+                <td>@Html.DisplayFor(modelItem => item.contact)</td>
+                <td>@Html.DisplayFor(modelItem => item.email)</td>
+                <td>@Html.DisplayFor(modelItem => item.address)</td>
+                <td>@Html.DisplayFor(modelItem => item.regNO)</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        @Html.ActionLink("Edit", "PhysicianEdit", new { id = item.physicianID }, new { @class = "btn btn-sm custom-btn" })
+                        @Html.ActionLink("Details", "PhysicianDetails", new { id = item.physicianID }, new { @class = "btn btn-sm custom-btn" })
+                        @*@Html.ActionLink("Remove", "PhysicianDelete", new { id = item.physicianID }, new { @class = "btn btn-sm custom-btn" })*@
+
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p class="text-end">
+    @Html.ActionLink("Create New", "PhysicianCreate", null, new { @class = "btn btn-success shadow" })
+</p>
+
+<div>
+    @Html.ActionLink("Back >", "Index", null, new { @class = "btn btn-outline-secondary btn-sm" })
+</div>

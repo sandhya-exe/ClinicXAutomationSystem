@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container text-center mt-5">
+    <img src="~/Content/images/errorr.png" alt="Error" class="img-fluid mb-4" style="max-width: 300px;" />
+    <h2 class="text-danger">Oops! Something went wrong.</h2>
+    <p class="lead text-muted">
+        We're sorry, but the page you're looking for encountered an error or doesn't exist.
+        Please go back to the <a href="@Url.Action("Index", "Home")" class="text-primary">home page</a> or contact support if the issue persists.
+    </p>
+</div>

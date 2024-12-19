@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewBag.Title = "AddViewHistory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddViewHistory</h2>
+
+@model ClinicXAutomationSystem.Models.PatientSymptomsViewModel
+
+
+<head>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container to center content */
+        .container {
+            width: 80%;
+            max-width: 900px;
+            margin: 30px auto;
+        }
+
+        /* Heading styles */
+        h2 {
+            font-size: 2em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Category heading */
+        h4 {
+            font-size: 1.2em;
+            font-weight: 500;
+            color: #444;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Form Group Styling */
+        .form-group {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling the checkbox group */
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Styling individual checkboxes */
+        label {
+            font-size: 1em;
+            color: #444;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+            accent-color: skyblue; /* For modern browsers that support it */
+        }
+
+        /* Styling the submit button */
+        button {
+            background-color: white;
+            color: #555;
+            border: 2px solid #555;
+            padding: 10px 20px;
+            font-size: 1em;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+        }
+
+            button:hover {
+                background-color: skyblue;
+                color: white;
+                border-color: skyblue;
+            }
+
+            button:focus {
+                outline: none;
+            }
+
+        /* Styling the checkboxes when selected */
+        input[type="checkbox"]:checked {
+            background-color: skyblue;
+            border-color: skyblue;
+        }
+
+        /* Adding spacing between elements */
+        .checkbox-group label {
+            padding: 5px 0;
+        }
+
+        form {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<h2>History Details</h2>
+
+@using (Html.BeginForm("AddViewHistory", "Patient", FormMethod.Post))
+{
+    <div class="form-group">
+        @foreach (var categoryGroup in Model.SymptomsGroupedByCategory)
+        {
+            <h4>@categoryGroup.Category</h4>
+            <div class="checkbox-group">
+                @foreach (var symptom in categoryGroup.Symptoms)
+                {
+                    // Check if the symptom is in the list of selected symptoms
+                    var isChecked = Model.SelectedSymptoms.Contains(symptom.SymptomID);
+
+                    <label>
+                        @Html.CheckBox("SelectedSymptoms", isChecked, new { value = symptom.SymptomID })
+                        @symptom.SymptomName
+                    </label><br />
+                }
+            </div> <!-- Closing checkbox-group div -->
+        }
+    </div> <!-- Closing form-group div -->
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+}
+
+<div>
+    @Html.ActionLink("Back to Dashboard", "Index", "Patient")
+</div>
+

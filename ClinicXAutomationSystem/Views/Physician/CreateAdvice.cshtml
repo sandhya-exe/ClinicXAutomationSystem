@@ -1,0 +1,121 @@
+﻿@model ClinicXAutomationSystem.Models.advice
+
+@{
+    ViewBag.Title = "Create Advice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div id="datalistDrugs" hidden>
+        @foreach (var item in ViewBag.Drugs)
+        {
+            <option value="@item.drugID">@item.name</option>
+        }
+    </div>
+
+    <div class="form-horizontal">
+        <!-- Fancy Heading -->
+        <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 20px;">
+            <h1 style="font-size: 2.5rem; color: #6c63ff; font-family: 'Nunito', sans-serif;">
+                <i class="fas fa-notes-medical" style="margin-right: 10px;"></i> Create Advice
+            </h1>
+            <p style="font-size: 1.2rem; color: #555;">Provide detailed advice and prescriptions for your patient below.</p>
+        </div>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.advice1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.advice1, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter advice here..." } })
+                @Html.ValidationMessageFor(model => model.advice1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <span class="control-label col-md-2">Patient Name</span>
+            <div class="col-md-10">
+                <input type="text" readonly class="form-control" value="@(ViewBag.PatientName as string)" />
+                <input type="hidden" name="AppointmentID" value="@(ViewBag.AppointmentID as string)" />
+                <input type="hidden" name="PatientID" value="@(ViewBag.PatientID as string)" />
+            </div>
+        </div>
+    </div>
+
+    <table id="tblDrugLine" class="table table-striped table-bordered" style="margin-top: 20px;">
+        <thead class="thead-dark">
+            <tr>
+                <th style="width: 5%;">Sl. No.</th>
+                <th style="width: 30%;">@Html.DisplayNameFor(model => model.prescriptions.First().drug.name)</th>
+                <th style="width: 25%;">@Html.DisplayNameFor(model => model.prescriptions.First().dosage)</th>
+                <th style="width: 30%;">@Html.DisplayNameFor(model => model.prescriptions.First().note)</th>
+                <th style="width: 10%;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="slno">1</td>
+                <td>
+                    <select drugCombo="unbound" class="form-control" name="prescriptions[0].DrugID"></select>
+                </td>
+                <td>
+                    <input type="text" class="form-control" name="prescriptions[0].dosage" placeholder="Dosage">
+                </td>
+                <td>
+                    <input type="text" class="form-control" name="prescriptions[0].note" placeholder="Additional notes">
+                </td>
+                <td class="addnewRowTD">
+                    <button id="AddNewRow" type="button" class="btn btn-primary">
+                        <i class="fas fa-plus-circle"></i> Add Row
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="form-group text-center" style="margin-top: 30px;">
+        <input type="submit" value="Add Advice" class="btn btn-success btn-lg" />
+    </div>
+}
+
+@section Scripts
+{
+    <script>
+        var _SlNo = 1;
+
+        $(function () {
+            BindAddNewButton();
+        });
+
+        function BindAddNewButton() {
+            $("#AddNewRow").click(function (e) {
+                e.preventDefault();
+                _SlNo++;
+
+                $.ajax({
+                    url: "/Physician/CreatePrescriptions/" + _SlNo, // Controller endpoint
+                    type: "GET",
+
+                    success: function (data) {
+                        $(".addnewRowTD").html(" ");
+                        $("#tblDrugLine tbody").append(data);
+                        BindAddNewButton();
+                    },
+                    error: function () {
+                        alert("Error loading new row.");
+                    }
+                });
+            });
+
+            $("select[drugCombo*='unbound']").html($("#datalistDrugs").html()).attr("drugCombo", "bound");
+        }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+}
+
+
+<div>
+    @Html.ActionLink("Back to Dashboard", "Index", "Physician")
+</div>
